@@ -6,16 +6,22 @@ import math
 def naive_bayes_classifier(dataset_filepath, snake_measurements):
   x = pd.read_csv(dataset_filepath, header=None)
   x.columns = ['class', 'length', 'weight', 'speed']
+  
 
+  mean = set()
   #seperate data by class
   classes = ['anaconda', 'cobra', 'python']
   class_data = {}
   for cls in classes:
     class_data[cls] = x[x['class'] == cls]
-
+    mean.add((cls, feature), meanValue)
+    
   #standard deviation
-  #mean
-
+  std = set()
+  for cls in classes:
+    for feature in features:
+       std.add((class,feature),sum((x_i - mean(cls, feature))**2) / (len(x) - 1))
+  
   
   #Prior probability
   total = len(x)
@@ -42,3 +48,4 @@ def naive_bayes_classifier(dataset_filepath, snake_measurements):
   # class_probabilities is a three element list indicating the probability of each class in the order [anaconda probability, cobra probability, python probability]
 
   return most_likely_class, class_probabilities
+
