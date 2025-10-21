@@ -13,6 +13,10 @@ def naive_bayes_classifier(dataset_filepath, snake_measurements):
   for cls in classes:
     class_data[cls] = x[x['class'] == cls]
 
+  #standard deviation
+  #mean
+
+  
   #Prior probability
   total = len(x)
   prior_probability = {}
@@ -36,4 +40,5 @@ def naive_bayes_classifier(dataset_filepath, snake_measurements):
 
   # most_likely_class is a string indicating the most likely class, either "anaconda", "cobra", or "python"
   # class_probabilities is a three element list indicating the probability of each class in the order [anaconda probability, cobra probability, python probability]
+
   return most_likely_class, class_probabilities
