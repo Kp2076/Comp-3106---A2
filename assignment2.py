@@ -5,14 +5,14 @@ import math
 
 def naive_bayes_classifier(dataset_filepath, snake_measurements):
   # load dataset
-  x = pd.read_csv(dataset_filepath, header=None)
-  x.columns = ['class', 'length', 'weight', 'speed']
+  dataset = pd.read_csv(dataset_filepath, header=None)
+  dataset.columns = ['class', 'length', 'weight', 'speed']
   
   classes = ['anaconda', 'cobra', 'python']
   features = ['length', 'weight', 'speed']
   
   #seperate data by class
-  class_data = {cls: x[x['class'] == cls] for cls in classes}
+  class_data = {cls: dataset[dataset['class'] == cls] for cls in classes}
     
   # store mean and std values for each class and feat 
   mean = {}
@@ -21,10 +21,10 @@ def naive_bayes_classifier(dataset_filepath, snake_measurements):
   # Compute mean and std values
   for cls in classes:
     for feature in features:
-       std.add((class,feature),sum((x_i - mean(cls, feature))**2) / (len(x) - 1))
+       std.add((class,feature),sum((x_i - mean(cls, feature))**2) / (len(dataset) - 1))
   
   #Prior probability
-  total = len(x)
+  total = len(dataset)
   prior_probability = {cls: len(class_data[cls]) / total for cls in classes}
 
   # Gaussian probability 
@@ -59,4 +59,5 @@ def naive_bayes_classifier(dataset_filepath, snake_measurements):
   # class_probabilities is a three element list indicating the probability of each class in the order [anaconda probability, cobra probability, python probability]
 
   return most_likely_class, class_probabilities
+
 
