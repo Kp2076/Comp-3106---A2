@@ -89,3 +89,9 @@ print(naive_bayes_classifier("./Examples/Example2/dataset.csv", [340, 26, 12]))
 print("Test 3")
 print(naive_bayes_classifier("./Examples/Example3/dataset.csv", [350, 42, 13]))
 
+print("Test For 5")
+print(naive_bayes_classifier("./Examples/Example0/dataset.csv", [350, 40, 15]))
+print(naive_bayes_classifier("./Examples/Example0/dataset.csv", [310, 20, 12]))
+print(naive_bayes_classifier("./Examples/Example0/dataset.csv", [392, 55, 19]))
+print(naive_bayes_classifier("./Examples/Example0/dataset.csv", [315, 32, 18]))
+
